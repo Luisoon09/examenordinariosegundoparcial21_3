@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            min-height: 100vh;
+        }
+        nav {
+            background-color: #667eea;
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+            padding: 10px 15px;
+            display: inline-block;
+        }
+        nav a:hover {
+            color: #ffd700;
+        }
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #667eea;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .usuario-info {
+            background-color: #f0f0f0;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: bold;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+            font-family: Arial, sans-serif;
+        }
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 30px;
+        }
+        button {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .btn-enviar {
+            background-color: #667eea;
+            color: white;
+        }
+        .btn-enviar:hover {
+            background-color: #5568d3;
+        }
+        .btn-limpiar {
+            background-color: #999;
+            color: white;
+        }
+        .btn-limpiar:hover {
+            background-color: #777;
+        }
+        .info-contacto {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 30px;
+            border-left: 4px solid #667eea;
+        }
+        .info-contacto h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        .info-contacto p {
+            color: #555;
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><label style="color: white; margin: 0 15px;">📌 Menú</label></li>
+            <li><a href="conocenos.html">Conócenos</a></li>
+            <li><a href="productos.html">Productos</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+            <li><a href="inicio.html" class="logout-btn" style="color: white; background: transparent;">Cerrar Sesión</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="usuario-info" id="usuarioInfo"></div>
+        <h1>Contacto</h1>
+        
+        <form id="contactoForm">
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Tu nombre completo" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+            </div>
+            <div class="form-group">
+                <label for="asunto">Asunto:</label>
+                <input type="text" id="asunto" name="asunto" placeholder="Tema de tu mensaje" required>
+            </div>
+            <div class="form-group">
+                <label for="mensaje">Mensaje:</label>
+                <textarea id="mensaje" name="mensaje" placeholder="Escribe tu mensaje aquí..." required></textarea>
+            </div>
+            <div class="button-group">
+                <button type="submit" class="btn-enviar">Enviar Mensaje</button>
+                <button type="reset" class="btn-limpiar">Limpiar</button>
+            </div>
+        </form>
+
+        <div class="info-contacto">
+            <h3>📞 Información de Contacto</h3>
+            <p><strong>Teléfono:</strong> +1 (555) 123-4567</p>
+            <p><strong>Email:</strong> info@ejemplo.com</p>
+            <p><strong>Dirección:</strong> Calle Principal 123, Ciudad, País</p>
+            <p><strong>Horario:</strong> Lunes a Viernes, 9:00 AM - 6:00 PM</p>
+        </div>
+    </div>
+
+    <script>
+        function verificarSesion() {
+            if (sessionStorage.getItem('logueado') !== 'true') {
+                alert('Debes iniciar sesión primero');
+                window.location.href = 'inicio.html';
+            } else {
+                const usuario = sessionStorage.getItem('usuario');
+                document.getElementById('usuarioInfo').textContent = '👤 Usuario: ' + usuario;
+            }
+        }
+        verificarSesion();
+
+        document.getElementById('contactoForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('¡Mensaje enviado exitosamente! Nos contactaremos pronto.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>

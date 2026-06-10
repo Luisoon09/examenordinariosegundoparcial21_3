@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conócenos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            min-height: 100vh;
+        }
+        nav {
+            background-color: #667eea;
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+            padding: 10px 15px;
+            display: inline-block;
+        }
+        nav a:hover {
+            color: #ffd700;
+        }
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #667eea;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        .logout-btn {
+            display: block;
+            margin-top: 30px;
+            padding: 12px 30px;
+            background-color: #764ba2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+            text-decoration: none;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+        .logout-btn:hover {
+            background-color: #653a84;
+        }
+        .usuario-info {
+            background-color: #f0f0f0;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><label style="color: white; margin: 0 15px;">📌 Menú</label></li>
+            <li><a href="conocenos.html">Conócenos</a></li>
+            <li><a href="productos.html">Productos</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+            <li><a href="inicio.html" class="logout-btn" style="color: white; background: transparent;">Cerrar Sesión</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="usuario-info" id="usuarioInfo"></div>
+        <h1>Conócenos</h1>
+        <p>
+            Bienvenido a nuestra empresa. Somos una organización comprometida con la excelencia y la innovación.
+            Con más de 10 años de experiencia en el mercado, hemos ayudado a miles de clientes a alcanzar sus objetivos.
+        </p>
+        <p>
+            Nuestra misión es proporcionar soluciones de calidad que satisfagan las necesidades de nuestros clientes.
+            Contamos con un equipo profesional y dedicado que trabaja día a día para mejorar nuestros servicios.
+        </p>
+        <p>
+            Creemos en la transparencia, la integridad y el compromiso con nuestros clientes. 
+            Cada producto y servicio que ofrecemos está diseñado pensando en tu satisfacción.
+        </p>
+    </div>
+
+    <script>
+        function verificarSesion() {
+            if (sessionStorage.getItem('logueado') !== 'true') {
+                alert('Debes iniciar sesión primero');
+                window.location.href = 'inicio.html';
+            } else {
+                const usuario = sessionStorage.getItem('usuario');
+                document.getElementById('usuarioInfo').textContent = '👤 Usuario: ' + usuario;
+            }
+        }
+        verificarSesion();
+    </script>
+</body>
+</html>
