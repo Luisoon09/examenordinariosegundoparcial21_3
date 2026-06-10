@@ -1,0 +1,26 @@
+# Archivos y carpetas a ignorar en Git
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+
+# Editores
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Dependencias
+node_modules/
+package-lock.json
+
+# Archivos de caché
+.cache/
+.temp/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Archivos locales
+local.config.js
